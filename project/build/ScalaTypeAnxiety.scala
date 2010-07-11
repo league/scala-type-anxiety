@@ -8,5 +8,8 @@ extends DefaultProject(info) with AutoCompilerPlugins
   override def compileOptions =
     super.compileOptions ++ compileOptions("-P:continuations:enable")
 
+  val scalaToolsSnapshots = "Scala Tools Snapshots" at "http://scala-tools.org/repo-snapshots/"
+  val scalazCore = "com.googlecode.scalaz" %% "scalaz-core" % "5.0-M3-SNAPSHOT"
+
   override def mainScalaSourcePath = "src"
 }
