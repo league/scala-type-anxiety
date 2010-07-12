@@ -2,6 +2,21 @@ import scala.util.Random
 
 object ForComprehension {
 
+  type M[A] = Option[A]
+
+  /* Type constructor M is a monad if it supports these operations... */
+  def unit[A] (x: A): M[A]
+    = Some(x)
+
+  def flatMap[A,B] (m: M[A]) (f: A => M[B]): M[B]
+    = m.flatMap(f)
+
+  def map[A,B] (m: M[A]) (f: A => B): M[B] =
+    flatMap(m){ x => unit(f(x)) }
+
+  def andThen[A,B] (ma: M[A]) (mb: M[B]): M[B] =
+    flatMap(ma){ x => mb }
+
   /* It's helpful to understand the translation of the for()
      statement in terms of flatMap and map. */
 
