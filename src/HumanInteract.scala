@@ -16,7 +16,7 @@ object HumanInteract {
   type Data = Int
   val sessions = new HashMap[UUID, Data=>Unit]
 
-  def ask(prompt: String): Data @suspendable =
+  def ask(prompt: String): Data @cps[Unit] =
     shift {
       k: (Data => Unit) => {
         val id = uuidGen
