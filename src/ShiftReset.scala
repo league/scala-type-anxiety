@@ -9,6 +9,7 @@ object ShiftReset {
 
   def doSomething1 =
     reset {
+      println("Ready?")
       val result = 1 + special * 3
       println(result)
     }

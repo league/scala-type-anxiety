@@ -2,8 +2,10 @@ object RegexMatchCPS {
 
   class Regex
   case class Literal(s: String) extends Regex
-  case class Concat(r1: Regex, r2: Regex) extends Regex
-  case class Choice(r1: Regex, r2: Regex) extends Regex
+  case class Concat(r1: Regex, r2: Regex)
+       extends Regex
+  case class Choice(r1: Regex, r2: Regex)
+       extends Regex
   case class Star(r: Regex) extends Regex
 
   def accept (regex: Regex,
